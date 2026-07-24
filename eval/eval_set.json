@@ -1,0 +1,96 @@
+[
+  {
+    "query": "When was Nimbus Cloud Storage founded and what does it provide?",
+    "expected_keywords": [
+      "2019",
+      "cloud storage"
+    ],
+    "expected_doc": "Nimbus_RAG_Test_Document.pdf",
+    "notes": "Plain-text semantic question - tests basic parsing and vector search."
+  },
+  {
+    "query": "Who is the CEO of Nimbus Cloud Storage?",
+    "expected_keywords": [
+      "Meera Anand"
+    ],
+    "expected_doc": "Nimbus_RAG_Test_Document.pdf",
+    "notes": "Exact-name lookup - good BM25 test case."
+  },
+  {
+    "query": "How many days do I have to return a StorNode device for a full refund?",
+    "expected_keywords": [
+      "30 days"
+    ],
+    "expected_doc": "Nimbus_RAG_Test_Document.pdf",
+    "notes": "Paraphrased question testing semantic search on the refund policy section."
+  },
+  {
+    "query": "What is RMA-4471?",
+    "expected_keywords": [
+      "RMA-4471",
+      "firmware"
+    ],
+    "expected_doc": "Nimbus_RAG_Test_Document.pdf",
+    "notes": "Exact alphanumeric code - vector search alone often misses this; strong BM25 test."
+  },
+  {
+    "query": "How much does the Business plan cost per month and how much storage does it include?",
+    "expected_keywords": [
+      "$199",
+      "20 TB"
+    ],
+    "expected_doc": "Nimbus_RAG_Test_Document.pdf",
+    "notes": "Table lookup - tests whether the pricing table survived parsing/chunking intact."
+  },
+  {
+    "query": "Which support plan includes 24/7 phone support and a dedicated rep?",
+    "expected_keywords": [
+      "Enterprise"
+    ],
+    "expected_doc": "Nimbus_RAG_Test_Document.pdf",
+    "notes": "Another table lookup, phrased as a question rather than a direct cell reference."
+  },
+  {
+    "query": "What is the support phone number and extension?",
+    "expected_keywords": [
+      "800-555-0199",
+      "extension 4"
+    ],
+    "expected_doc": "Nimbus_RAG_Test_Document.pdf",
+    "notes": "Exact contact info - BM25 test case."
+  },
+  {
+    "query": "What is the escalation code for a data-center outage?",
+    "expected_keywords": [
+      "OPS-CRITICAL-1"
+    ],
+    "expected_doc": "Nimbus_RAG_Test_Document.pdf",
+    "notes": "Rare exact code - vector search is likely to miss this without BM25."
+  },
+  {
+    "query": "What does the quarterly revenue chart show for 2025?",
+    "expected_keywords": [
+      "revenue"
+    ],
+    "expected_doc": "Nimbus_RAG_Test_Document.pdf",
+    "notes": "Tests image extraction + Groq vision captioning - answer should come from the chart's caption, not surrounding text."
+  },
+  {
+    "query": "What is the warranty certificate number and serial number for the StorNode X200 device?",
+    "expected_keywords": [
+      "WR-88214",
+      "NX200-77712-PUNE"
+    ],
+    "expected_doc": "Nimbus_RAG_Test_Document.pdf",
+    "notes": "This information ONLY exists on the fully-scanned page (Section 6). If this fails, OCR fallback isn't working."
+  },
+  {
+    "query": "How long is the extended hardware warranty and when does it expire?",
+    "expected_keywords": [
+      "36 months",
+      "2028"
+    ],
+    "expected_doc": "Nimbus_RAG_Test_Document.pdf",
+    "notes": "Also only recoverable via OCR - second check on the scanned page."
+  }
+]
